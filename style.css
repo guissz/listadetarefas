@@ -3,82 +3,133 @@
 * {
     padding: 0;
     margin: 0;
-    box-sizing: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fffaf2;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f0f0;
 }
 
-#container {
-    text-align: center;
-    padding: 2.5rem;
-    width: 300px;
-    min-height: 100px;
-    background-color: #8c8377;
-    border-radius: 12px;
-    margin: auto;
-    position: relative;
-    
+#lista-de-tarefas {
+    width: 30%;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 5px;
+#cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#deletar {
+    background-color: #ff5f5f;
+    color: #fff;
+    border: none;
+    padding: 8px;
     border-radius: 5px;
-    width: 200px;
-    border-style: none;
-    outline: none;
-    box-shadow: 1px 1px 3px #000;
-}
-
-input::placeholder {
-    color: #000;
-}
-
-#add-btn {
-    background-color: #fffb65;
-    padding: 5px;
-    border-radius: 5px;
-    margin-left: 4px;
-    color: #000;
-    border-style: none;
-    box-shadow: 1px 1px 3px #000;
     cursor: pointer;
+    transition: ease .3s;
 }
 
-#add-btn:hover {
-    background-color: #ffe419;
+#deletar:hover {
+    background-color: red;
 }
 
-#add-btn:active {
-    background-color: #ffe419;
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin-bottom: 5px;
+}
+
+#inserir-texto {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#inserir-texto input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+#inserir-texto button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: ease .3s;
+}
+
+#inserir-texto button:hover {
+    background-color: green;
+}
+
+ul {
+    list-style-type: none;
 }
 
 .tarefa {
-    margin-top: 5px;
-    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.lixeira {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
+.tarefa-checkbox {
+    margin-right: 10px;
+}
+
+.tarefa span {
+    flex: 1;
+}
+
+.tarefa i {
+    color: #ff5f5f;
     cursor: pointer;
-    transition: ease .2s;
-    color: #311906
+    transition: ease .3s;
 }
 
-.lixeira:hover {
-    color: #6d0000;
+.tarefa i:hover {
+    color: red;
+}
+
+@media screen and (max-width: 280px) {
+    #inserir-texto input, #inserir-texto button {
+        font-size: 12px; 
+        padding: 8px 10px;
+    }
+}
+
+@media screen and (max-width: 912px) {
+    #lista-de-tarefas {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    #lista-de-tarefas {
+        width: 70%;
+    }
 }

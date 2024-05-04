@@ -1,35 +1,50 @@
-let botaoAdd = document.getElementById('add-btn')
-let input = document.getElementById('input-tarefas')
-let tarefas = document.getElementById('tarefas')
-let marcado = false
+const adicionarTarefa = document.getElementById('adicionar')
+const texto = document.getElementById('input-tarefas')
+const ul = document.querySelector('ul')
 
-botaoAdd.addEventListener('click', function() {
-    if (input.value != '') {
-        let tarefa = document.createElement('div')
-        tarefa.className = 'tarefa'
-        tarefas.appendChild(tarefa)
+adicionarTarefa.addEventListener('click', function() {
+    if (texto.value !== '') {
+        const divTarefa = document.createElement('div')
+        divTarefa.className = 'tarefa'
 
-        let textoTarefa = document.createElement('span')
-        textoTarefa.textContent = '- ' + input.value
-        tarefa.appendChild(textoTarefa)
+        const checkbox = document.createElement('input')
+        checkbox.type = 'checkbox'
+        checkbox.className = 'tarefa-checkbox'
+        divTarefa.appendChild(checkbox)
 
-        let deletar = document.createElement('i')
-        deletar.className = 'fa-solid fa-trash lixeira'
-        tarefa.appendChild(deletar)
+        const textoTarefa = document.createElement('span')
+        textoTarefa.textContent = texto.value
+        divTarefa.appendChild(textoTarefa)
 
-        input.value = ''
-        
-        tarefa.addEventListener('click', function() {
-            if (marcado == false) {
-                tarefa.style.textDecoration = 'line-through'
-                marcado = true
+        const deletar = document.createElement('i')
+        deletar.className = 'fa-solid fa-trash-can'
+        divTarefa.appendChild(deletar)
+
+        ul.appendChild(divTarefa)
+
+        texto.value = ''
+
+        checkbox.addEventListener('change', function() {
+            if (checkbox.checked) {
+                textoTarefa.style.textDecoration = 'line-through'
             } else {
-                tarefa.style.textDecoration = ''
-                marcado = false
+                textoTarefa.style.textDecoration = 'none'
             }
         })
-        deletar.addEventListener('click', function() {
-            tarefas.removeChild(tarefa)
+
+        deletar.addEventListener('click', function(e) {
+            e.stopPropagation()
+            ul.removeChild(divTarefa)
         })
     }
 })
+
+function excluirTarefas() {
+    const tarefas = document.querySelectorAll('.tarefa');
+    tarefas.forEach(function(tarefa) {
+        tarefa.remove();
+    });
+}
+
+const botaoDeletarTodasAsTarefas = document.getElementById('deletar');
+botaoDeletarTodasAsTarefas.addEventListener('click', excluirTarefas);

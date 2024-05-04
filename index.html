@@ -9,13 +9,20 @@
 </head>
 <body>
     
-    <div id="container">
-        <h1>Lista de Tarefas</h1>
-        <input type="text" id="input-tarefas" placeholder="Digite sua tarefa">
-        <button id="add-btn">Adicionar</button>
-        <div id="tarefas"></div>
+    <div id="lista-de-tarefas">
+        <div id="cabecalho">    
+            <h1>Lista de Tarefas</h1>
+            <button id="deletar"><i class="fa-solid fa-trash"></i></button>
+        </div>
+        <hr>
+        <br>
+        <div id="inserir-texto">
+            <input type="text" id="input-tarefas" placeholder="Adicione uma nova tarefa">
+            <button id="adicionar"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <ul></ul>
     </div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
